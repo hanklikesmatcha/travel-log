@@ -1,8 +1,13 @@
-import { getCitiesByCountryId, getCountries } from '../apis/apiCities'
+import {
+  getCitiesByCountryId,
+  getCountries,
+  deleteCityCountryId,
+} from '../apis/apiCities'
 
 export const SHOW_COUNTRIES = 'SHOW_COUNTRIES'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const SHOW_CITIES = 'SHOW_CITIES'
+export const DELETE_CITY = 'DELETE_CITY'
 
 export function receiveCountries(countries) {
   return {
@@ -42,6 +47,25 @@ export function fetchCountryCity(countryId) {
     getCitiesByCountryId(countryId)
       .then((cities) => {
         dispatch(receiveCities(cities))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function deleteCity(city) {
+  return {
+    type: DELETE_CITY,
+    payload: city,
+  }
+}
+
+export function deleteCityByCountryId(countryId, cityId) {
+  return (dispatch) => {
+    deleteCityCountryId(countryId, cityId)
+      .then((city) => {
+        dispatch(deleteCity(city))
       })
       .catch((err) => {
         dispatch(showError(err.message))
