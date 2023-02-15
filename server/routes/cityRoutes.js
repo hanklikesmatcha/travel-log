@@ -26,4 +26,19 @@ router.get('/:countryId', (req, res) => {
     })
 })
 
+//DELETE /api/v1/cities/:countryId
+router.delete('/:countryId/:id', (req, res) => {
+  db.deleteCity(Number(req.params.id))
+    .then(() => {
+      return db.getCitiesByCountryId(Number(req.params.countryId))
+    })
+    .then((cities) => {
+      res.json(cities)
+    })
+    .catch((e) => {
+      console.error(e)
+      res.status(500).json({ message: 'Hmm, try again' })
+    })
+})
+
 module.exports = router
