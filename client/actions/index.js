@@ -1,18 +1,30 @@
-import { getFruits } from '../apis/fruits'
+import { getCountries } from '../apis/apiCities'
 
-export const SET_FRUITS = 'SET_FRUITS'
+export const SHOW_COUNTRIES = 'SHOW_COUNTRIES'
+export const SHOW_ERROR = 'SHOW_ERROR'
 
-export function setFruits(fruits) {
+export function receiveCountries(countries) {
   return {
-    type: SET_FRUITS,
-    payload: fruits,
+    type: SHOW_COUNTRIES,
+    payload: countries,
   }
 }
 
-export function fetchFruits() {
+export function showError(errorMessage) {
+  return {
+    type: SHOW_ERROR,
+    payload: errorMessage,
+  }
+}
+
+export function showCountries() {
   return (dispatch) => {
-    return getFruits().then((fruits) => {
-      dispatch(setFruits(fruits))
-    })
+    return getCountries()
+      .then((countries) => {
+        dispatch(receiveCountries(countries))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
   }
 }
