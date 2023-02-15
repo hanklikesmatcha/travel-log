@@ -7,3 +7,9 @@ export function getCountries() {
     return result.body
   })
 }
+
+export function getCitiesByCountryId(countryId) {
+  return request.get(rootUrl + countryId).then((res) => {
+    res.body
+  })
+}
