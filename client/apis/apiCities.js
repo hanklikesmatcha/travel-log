@@ -22,3 +22,10 @@ export function addCityByCountryId(countryId, newCity) {
     .send(newCity)
     .then((res) => res.body)
 }
+
+export function addCountry(newCountry) {
+  return request
+    .post(`/api/v1/cities/new`)
+    .send(newCountry)
+    .then((res) => res.body)
+}
