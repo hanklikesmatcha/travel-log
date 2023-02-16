@@ -7,9 +7,7 @@ export function getCountries() {
 }
 
 export function getCitiesByCountryId(countryId) {
-  return request.get(`api/v1/cities/${countryId}`).then((res) => {
-    res.body
-  })
+  return request.get(`api/v1/cities/${countryId}`).then((res) => res.body)
 }
 
 export function deleteCityCountryId(countryId, cityId) {

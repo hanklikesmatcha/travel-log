@@ -2,7 +2,7 @@ const express = require('express')
 const db = require('../db/dbCities')
 const router = express.Router()
 
-//GET /api/v1/
+//GET /api/v1/cities
 router.get('/', (req, res) => {
   db.getCountries()
     .then((countries) => {
@@ -27,7 +27,7 @@ router.get('/:countryId', (req, res) => {
 })
 
 //DELETE /api/v1/cities/:countryId
-router.delete('/:countryId/:id', (req, res) => {
+router.delete('/:countryId/', (req, res) => {
   db.deleteCity(Number(req.params.id))
     .then(() => {
       return db.getCitiesByCountryId(Number(req.params.countryId))
