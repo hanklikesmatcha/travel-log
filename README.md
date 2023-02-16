@@ -1,4 +1,7 @@
-# Boilerplate: Fullstack
+# Travel log
+
+Keep track of countries and cities you have travelled to!
+
 
 ## Setup
 
