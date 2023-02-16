@@ -10,8 +10,8 @@ export const SHOW_COUNTRIES = 'SHOW_COUNTRIES'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const SHOW_CITIES = 'SHOW_CITIES'
 export const DELETE_CITY = 'DELETE_CITY'
-export const UPDATE_CITIES = 'UPDATE_CITIES'
-export const UPDATE_COUNTRY = 'UPDATE_COUNTRY'
+export const ADD_CITIES = 'ADD_CITIES'
+export const ADD_COUNTRY = 'ADD_COUNTRY'
 
 export function receiveCountries(countries) {
   return {
@@ -77,9 +77,9 @@ export function deleteCityByCountryId(countryId, cityId) {
   }
 }
 
-export function updateCities(cities) {
+export function addCities(cities) {
   return {
-    type: UPDATE_CITIES,
+    type: ADD_CITIES,
     payload: cities,
   }
 }
@@ -88,7 +88,7 @@ export function postCityByCountryId(countryId, newCity) {
   return (dispatch) => {
     addCityByCountryId(countryId, newCity)
       .then((cities) => {
-        dispatch(updateCities(cities))
+        dispatch(addCities(cities))
       })
       .catch((err) => {
         dispatch(showError(err.message))
@@ -96,19 +96,17 @@ export function postCityByCountryId(countryId, newCity) {
   }
 }
 
-export function updateCountry(country) {
+export function countryAdded(country) {
   return {
-    type: UPDATE_COUNTRY,
+    type: ADD_COUNTRY,
     payload: country,
   }
 }
 
-export function postCountry(newCountry) {
+export function addNewCountry(countryName) {
   return (dispatch) => {
-    addCountry(newCountry)
-      .then((country) => {
-        dispatch(updateCountry(country))
-      })
+    addCountry(countryName)
+      .then((countryName) => dispatch(receiveCountries(countryName)))
       .catch((err) => {
         dispatch(showError(err.message))
       })

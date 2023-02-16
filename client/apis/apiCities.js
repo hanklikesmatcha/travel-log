@@ -23,9 +23,9 @@ export function addCityByCountryId(countryId, newCity) {
     .then((res) => res.body)
 }
 
-export function addCountry(newCountry) {
+export function addCountry(name) {
   return request
     .post(`/api/v1/cities`)
-    .send({ newCountry })
+    .send({ name })
     .then((res) => res.body)
 }
