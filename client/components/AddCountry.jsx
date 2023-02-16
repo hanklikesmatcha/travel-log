@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addNewCountry } from '../actions'
 
 function AddCountry() {

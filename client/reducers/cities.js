@@ -1,4 +1,4 @@
-import { DELETE_CITY, SHOW_CITIES, UPDATE_CITIES } from '../actions'
+import { DELETE_CITY, SHOW_CITIES } from '../actions'
 
 export default function citiesReducer(state = [], action) {
   const { type, payload } = action
@@ -7,8 +7,6 @@ export default function citiesReducer(state = [], action) {
       return payload
     case DELETE_CITY:
       return payload
-    // case UPDATE_CITIES:
-    //   return payload
     default:
       return state
   }
