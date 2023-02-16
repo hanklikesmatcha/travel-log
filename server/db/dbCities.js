@@ -12,8 +12,13 @@ function deleteCity(id, db = connection) {
   return db('cities').where('id', id).del()
 }
 
+function addCity(city, db = connection) {
+  return db('cities').insert(city)
+}
+
 module.exports = {
   getCountries,
   getCitiesByCountryId,
   deleteCity,
+  addCity,
 }
