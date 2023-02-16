@@ -5,7 +5,7 @@ import { postCountry } from '../actions'
 
 function AddCountry() {
   const [newCountry, setNewCountry] = useState({
-    city: '',
+    country: '',
   })
 
   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ function AddCountry() {
 
   const handleAdd = (e) => {
     e.preventDefault()
-    const newCountry = { ...newCountry }
+    //const newCountry = { ...newCountry }
     dispatch(postCountry(newCountry))
     setNewCountry({
       country: '',
@@ -32,8 +32,8 @@ function AddCountry() {
   return (
     <>
       <h1>Where else have you been?</h1>
-      <label htmlFor="city">Country Name: </label>
-      <input name="city" value={country || ''} onChange={handleChange} />
+      <label htmlFor="country">Country Name: </label>
+      <input name="country" value={country || ''} onChange={handleChange} />
       <button onClick={handleAdd}>Enter New Country</button>
     </>
   )

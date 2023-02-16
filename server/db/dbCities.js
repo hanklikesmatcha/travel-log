@@ -16,8 +16,8 @@ function addCity(city, db = connection) {
   return db('cities').insert(city)
 }
 
-function addCountry(country, db = connection) {
-  return db('countries').insert(country)
+function addCountry(countryName, db = connection) {
+  return db('countries').insert({ country: countryName })
 }
 
 module.exports = {

@@ -58,13 +58,12 @@ router.post('/:countryId/new', (req, res) => {
 })
 
 //POST /api/v1/cities/new
-router.post('/new', (req, res) => {
-  const countryId = req.params.countryId
+router.post('/', (req, res) => {
+  const countryName = req.body
 
-  const newCountry = { country_id: countryId }
-
-  db.addCountry(newCountry)
-    .then((country) => res.json(country))
+  db.addCountry(countryName.name)
+    .then(() => db.getCountries())
+    .then((countries) => res.json(countries))
     .catch((e) => {
       console.error(e)
       res.status(500).json({ message: 'Hmm, try again' })
