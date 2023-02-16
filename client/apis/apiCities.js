@@ -15,3 +15,10 @@ export function deleteCityCountryId(countryId, cityId) {
     .delete(`/api/v1/cities/${countryId}/${cityId}`)
     .then((res) => res.body)
 }
+
+export function addCityByCountryId(countryId, newCity) {
+  return request
+    .post(`/api/v1/cities/${countryId}/new`)
+    .send(newCity)
+    .then((res) => res.body)
+}
