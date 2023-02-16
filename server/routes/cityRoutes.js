@@ -41,4 +41,20 @@ router.delete('/:countryId/:id', (req, res) => {
     })
 })
 
+//POST /api/v1/cities/:countryId/new
+router.post('/:countryId/new', (req, res) => {
+  const countryId = req.params.countryId
+  const cities = req.body
+
+  const newCity = { city: cities.city, country_id: countryId }
+
+  db.addCity(newCity)
+    .then(() => db.getCitiesByCountryId(countryId))
+    .then((cities) => res.json(cities))
+    .catch((e) => {
+      console.error(e)
+      res.status(500).json({ message: 'Hmm, try again' })
+    })
+})
+
 module.exports = router
