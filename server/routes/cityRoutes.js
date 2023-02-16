@@ -57,4 +57,18 @@ router.post('/:countryId/new', (req, res) => {
     })
 })
 
+//POST /api/v1/cities/new
+router.post('/new', (req, res) => {
+  const countryId = req.params.countryId
+
+  const newCountry = { country_id: countryId }
+
+  db.addCountry(newCountry)
+    .then((country) => res.json(country))
+    .catch((e) => {
+      console.error(e)
+      res.status(500).json({ message: 'Hmm, try again' })
+    })
+})
+
 module.exports = router
