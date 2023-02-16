@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { deleteCityByCountryId, fetchCountryCity } from '../actions'
 
+import AddCity from './AddCity'
+
 function Cities() {
   const dispatch = useDispatch()
   const cities = useSelector((state) => state.cities)
@@ -28,6 +30,7 @@ function Cities() {
             handleDelete={handleDelete}
           />
         ))}
+      <AddCity />
     </div>
   )
 }
