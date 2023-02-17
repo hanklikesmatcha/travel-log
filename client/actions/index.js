@@ -12,6 +12,7 @@ export const SHOW_CITIES = 'SHOW_CITIES'
 export const DELETE_CITY = 'DELETE_CITY'
 export const ADD_CITIES = 'ADD_CITIES'
 export const ADD_COUNTRY = 'ADD_COUNTRY'
+export const UPDATE_CITY = 'UPDATE_CITY'
 
 export function receiveCountries(countries) {
   return {
@@ -107,6 +108,25 @@ export function addNewCountry(countryName) {
   return (dispatch) => {
     addCountry(countryName)
       .then((countryName) => dispatch(receiveCountries(countryName)))
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function cityEdited(city) {
+  return {
+    type: UPDATE_CITY,
+    payload: city,
+  }
+}
+
+export function editCity(id, city) {
+  return (dispatch) => {
+    editCity(id, city)
+      .then((city) => {
+        dispatch(cityEdited(city))
+      })
       .catch((err) => {
         dispatch(showError(err.message))
       })
