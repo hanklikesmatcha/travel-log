@@ -70,4 +70,20 @@ router.post('/', (req, res) => {
     })
 })
 
+//PATCH /api/v1/cities/:id
+router.patch('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  const updatedCity = req.body
+
+  return db
+    .editCity(id, updatedCity.city)
+    .then(() => {
+      res.json({ id: id, city: updatedCity.city })
+    })
+    .catch((e) => {
+      console.error(e)
+      res.status(500).json({ message: 'Hmm, try again' })
+    })
+})
+
 module.exports = router
