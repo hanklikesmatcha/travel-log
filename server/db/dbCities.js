@@ -20,10 +20,15 @@ function addCountry(countryName, db = connection) {
   return db('countries').insert({ country: countryName })
 }
 
+function editCity(id, city, db = connection) {
+  return db('cities').update({ city: city }).where({ id })
+}
+
 module.exports = {
   getCountries,
   getCitiesByCountryId,
   deleteCity,
   addCity,
   addCountry,
+  editCity,
 }
