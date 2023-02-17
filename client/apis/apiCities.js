@@ -29,3 +29,10 @@ export function addCountry(name) {
     .send({ name })
     .then((res) => res.body)
 }
+
+export function editCity(countryId, city) {
+  return request
+    .post(`api/v1/cities/${countryId}`)
+    .send({ city })
+    .then((res) => res.body)
+}
