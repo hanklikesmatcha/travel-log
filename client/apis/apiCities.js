@@ -32,7 +32,7 @@ export function addCountry(name) {
 
 export function editCity(countryId, city) {
   return request
-    .post(`api/v1/cities/${countryId}`)
+    .patch(`api/v1/cities/${countryId}`)
     .send({ city })
     .then((res) => res.body)
 }
