@@ -37,7 +37,9 @@ function AddCity() {
       <h1>Where else have you been?</h1>
       <label htmlFor="city">City Name: </label>
       <input name="city" value={city || ''} onChange={handleChange} />
-      <Button onClick={handleAdd}>Enter New City</Button>
+      <Button color="green" compact uppercase onClick={handleAdd}>
+        Enter New City
+      </Button>
     </>
   )
 }

@@ -20,7 +20,7 @@ function Cities() {
 
   return (
     <div>
-      <h3>Which cities have you been to?</h3>
+      <h1>Which cities have you been to?</h1>
       {cities &&
         cities?.map((city, i) => (
           <CityInfo
@@ -38,7 +38,7 @@ function Cities() {
 function CityInfo({ id, city, handleDelete }) {
   return (
     <div>
-      <h1>{city}</h1>
+      <h3>{city}</h3>
       <button onClick={() => handleDelete(id)}>Delete</button>
     </div>
   )
