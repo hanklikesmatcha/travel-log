@@ -5,6 +5,8 @@ import { deleteCityByCountryId, fetchCountryCity } from '../actions'
 
 import AddCity from './AddCity'
 
+import { Button } from '@mantine/core'
+
 function Cities() {
   const dispatch = useDispatch()
   const cities = useSelector((state) => state.cities)
@@ -39,7 +41,9 @@ function CityInfo({ id, city, handleDelete }) {
   return (
     <div>
       <h3>{city}</h3>
-      <button onClick={() => handleDelete(id)}>Delete</button>
+      <Button color="red" compact uppercase onClick={() => handleDelete(id)}>
+        Delete
+      </Button>
     </div>
   )
 }

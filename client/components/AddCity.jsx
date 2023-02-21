@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { postCityByCountryId } from '../actions'
 
-import { Button } from '@mantine/core'
+import { Button, Input } from '@mantine/core'
 
 function AddCity() {
   const { countryId } = useParams()
@@ -35,8 +35,14 @@ function AddCity() {
   return (
     <>
       <h1>Where else have you been?</h1>
-      <label htmlFor="city">City Name: </label>
-      <input name="city" value={city || ''} onChange={handleChange} />
+      <Input
+        placeholder="Enter New City"
+        size="xl"
+        name="city"
+        value={city || ''}
+        onChange={handleChange}
+      />
+      <br />
       <Button color="green" compact uppercase onClick={handleAdd}>
         Enter New City
       </Button>

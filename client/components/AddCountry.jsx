@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNewCountry } from '../actions'
 
-import { Button } from '@mantine/core'
+import { Button, Input } from '@mantine/core'
 
 function AddCountry() {
   const [country, setCountry] = useState('')
@@ -22,8 +22,14 @@ function AddCountry() {
   return (
     <>
       <h1>Where else have you been?</h1>
-      <label htmlFor="country">Country Name: </label>
-      <input name="country" value={country || ''} onChange={handleChange} />
+      <Input
+        placeholder="Enter New City"
+        size="xl"
+        name="country"
+        value={country || ''}
+        onChange={handleChange}
+      />
+      <br />
       <Button color="green" compact uppercase onClick={handleSubmit}>
         Enter New Country
       </Button>
