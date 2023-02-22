@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addNewCountry } from '../actions'
+import { addNewCountry } from '../actions/countries'
 
 import { Button, Input } from '@mantine/core'
 

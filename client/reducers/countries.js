@@ -1,4 +1,4 @@
-import { ADD_COUNTRY, SHOW_COUNTRIES } from '../actions'
+import { ADD_COUNTRY, SHOW_COUNTRIES } from '../actions/countries'
 
 export default function countriesReducer(state = [], action) {
   const { type, payload } = action

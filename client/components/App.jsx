@@ -8,7 +8,7 @@ import Home from './Home'
 import Cities from './Cities'
 import Footer from './Footer'
 
-import { showCountries } from '../actions'
+import { showCountries } from '../actions/countries'
 
 function App() {
   const dispatch = useDispatch()

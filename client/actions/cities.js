@@ -1,42 +1,19 @@
 import {
   getCitiesByCountryId,
-  getCountries,
   deleteCityCountryId,
   addCityByCountryId,
-  addCountry,
-} from '../apis/apiCities'
+} from '../apis/cities'
 
-export const SHOW_COUNTRIES = 'SHOW_COUNTRIES'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const SHOW_CITIES = 'SHOW_CITIES'
 export const DELETE_CITY = 'DELETE_CITY'
 export const ADD_CITIES = 'ADD_CITIES'
-export const ADD_COUNTRY = 'ADD_COUNTRY'
 export const UPDATE_CITY = 'UPDATE_CITY'
-
-export function receiveCountries(countries) {
-  return {
-    type: SHOW_COUNTRIES,
-    payload: countries,
-  }
-}
 
 export function showError(errorMessage) {
   return {
     type: SHOW_ERROR,
     payload: errorMessage,
-  }
-}
-
-export function showCountries() {
-  return (dispatch) => {
-    return getCountries()
-      .then((countries) => {
-        dispatch(receiveCountries(countries))
-      })
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
   }
 }
 
@@ -91,23 +68,6 @@ export function postCityByCountryId(countryId, newCity) {
       .then((cities) => {
         dispatch(addCities(cities))
       })
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
-  }
-}
-
-export function countryAdded(country) {
-  return {
-    type: ADD_COUNTRY,
-    payload: country,
-  }
-}
-
-export function addNewCountry(countryName) {
-  return (dispatch) => {
-    addCountry(countryName)
-      .then((countryName) => dispatch(receiveCountries(countryName)))
       .catch((err) => {
         dispatch(showError(err.message))
       })

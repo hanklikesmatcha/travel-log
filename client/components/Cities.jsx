@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { deleteCityByCountryId, fetchCountryCity } from '../actions'
+import { deleteCityByCountryId, fetchCountryCity } from '../actions/cities'
 
 import AddCity from './AddCity'
 

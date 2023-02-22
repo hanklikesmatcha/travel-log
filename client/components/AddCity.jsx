@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { postCityByCountryId } from '../actions'
+import { postCityByCountryId } from '../actions/cities'
 
 import { Button, Input } from '@mantine/core'
 
