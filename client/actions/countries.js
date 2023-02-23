@@ -1,8 +1,9 @@
-import { getCountries, addCountry } from '../apis/coutries'
+import { getCountries, addCountry, deleteCountry } from '../apis/coutries'
 
 export const SHOW_COUNTRIES = 'SHOW_COUNTRIES'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const ADD_COUNTRY = 'ADD_COUNTRY'
+export const DELETE_COUNTRY = 'DELETE_COUNTRY'
 
 export function receiveCountries(countries) {
   return {
@@ -41,6 +42,25 @@ export function addNewCountry(countryName) {
   return (dispatch) => {
     addCountry(countryName)
       .then((countryName) => dispatch(receiveCountries(countryName)))
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function countryDeleted(id) {
+  return {
+    type: DELETE_COUNTRY,
+    payload: id,
+  }
+}
+
+export function delCountry(id) {
+  return (dispatch) => {
+    deleteCountry(id)
+      .then(() => {
+        dispatch(countryDeleted(id))
+      })
       .catch((err) => {
         dispatch(showError(err.message))
       })
