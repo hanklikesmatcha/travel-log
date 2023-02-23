@@ -17,8 +17,8 @@ function deleteCity(id, db = connection) {
 }
 
 module.exports = {
-  createCity,
   readCitiesByCountryId,
-  updateCity,
   deleteCity,
+  createCity,
+  updateCity,
 }

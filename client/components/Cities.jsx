@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { deleteCityByCountryId, fetchCountryCity } from '../actions/cities'
 
 import AddCity from './AddCity'
-import City from './EditCity'
 
 import { CloseButton } from '@mantine/core'
 
@@ -34,7 +33,6 @@ function Cities() {
           />
         ))}
       <AddCity />
-      <City />
     </div>
   )
 }
