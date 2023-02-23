@@ -1,4 +1,9 @@
-import { ADD_COUNTRY, SHOW_COUNTRIES } from '../actions/countries'
+import {
+  ADD_COUNTRY,
+  SHOW_COUNTRIES,
+  DELETE_COUNTRY,
+  UPDATE_COUNTRY,
+} from '../actions/countries'
 
 export default function countriesReducer(state = [], action) {
   const { type, payload } = action
@@ -7,6 +12,12 @@ export default function countriesReducer(state = [], action) {
       return payload
     case ADD_COUNTRY:
       return payload
+    case DELETE_COUNTRY:
+      return payload
+    case UPDATE_COUNTRY:
+      return state.map((country) =>
+        country.id === payload.id ? payload : country
+      )
     default:
       return state
   }
