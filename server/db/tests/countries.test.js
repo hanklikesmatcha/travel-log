@@ -49,3 +49,16 @@ describe('deleteCountry', () => {
       })
   })
 })
+
+describe('updateCountry', () => {
+  it('updates a country', () => {
+    return db
+      .updateCountry(1, 'Italy', testDb)
+      .then(() => {
+        return db.readCountries(testDb)
+      })
+      .then((countries) => {
+        expect(countries[0].country).toBe('Italy')
+      })
+  })
+})
