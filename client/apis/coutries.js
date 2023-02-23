@@ -14,5 +14,14 @@ export function addCountry(name) {
 }
 
 export function deleteCountry(id) {
-  return request.delete(`/api/v1/countries/${id}`).then(() => {})
+  return request.delete(`/api/v1/countries/${id}`).then((res) => {
+    res.body
+  })
+}
+
+export function updateCountry(id, country) {
+  return request
+    .patch(`/api/v1/countries/${id}`)
+    .send({ country })
+    .then((res) => res.body)
 }
