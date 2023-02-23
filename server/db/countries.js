@@ -4,8 +4,8 @@ function getCountries(db = connection) {
   return db('countries').select()
 }
 
-function addCountry(id, db = connection) {
-  return db('countries').insert({ country: id })
+function addCountry(countryName, db = connection) {
+  return db('countries').insert({ country: countryName })
 }
 
 function deleteCountry(id, db = connection) {
