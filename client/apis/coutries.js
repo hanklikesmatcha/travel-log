@@ -8,7 +8,11 @@ export function getCountries() {
 
 export function addCountry(name) {
   return request
-    .post(`/api/v1/cities`)
+    .post(`/api/v1/countries`)
     .send({ name })
-    .then((res) => res.body)
+    .then((res) => res.body[0])
+}
+
+export function deleteCountry(id) {
+  return request.delete(`/api/v1/countries/${id}`).then(() => {})
 }
