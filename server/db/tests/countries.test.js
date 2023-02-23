@@ -12,7 +12,7 @@ beforeEach(() => {
   return testDb.seed.run()
 })
 
-describe('getCountries', () => {
+describe('readCountries', () => {
   it('returns an array of countries', () => {
     return db.readCountries(testDb).then((countries) => {
       expect(countries).toHaveLength(3)
