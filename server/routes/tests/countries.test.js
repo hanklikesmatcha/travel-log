@@ -78,7 +78,30 @@ describe('POST /', () => {
   it('returns 500 and logs error message when error', () => {
     db.readCountries.mockImplementation(() => Promise.reject('error'))
     return request(server)
-      .get('/api/v1/countries')
+      .post('/api/v1/countries')
+      .then((res) => {
+        expect(res.status).toBe(500)
+      })
+  })
+})
+
+describe('PATCH /:countryId', () => {
+  it('returns an array of updated country', () => {
+    const fakeData = { id: 1, country: 'New Zealand' }
+    db.updateCountry.mockReturnValue(Promise.resolve())
+    return request(server)
+      .patch(`/api/v1/countries/${fakeData.id}`)
+      .send(fakeData)
+      .then((res) => {
+        expect(res.status).toBe(200)
+        expect(res.body.country).toBe('New Zealand')
+      })
+  })
+  it('returns 500 and logs error message when error', () => {
+    const fakeData = { id: 1, country: 'New Zealand' }
+    db.readCountries.mockImplementation(() => Promise.reject('error'))
+    return request(server)
+      .patch(`/api/v1/countries/${fakeData.id}`)
       .then((res) => {
         expect(res.status).toBe(500)
       })
