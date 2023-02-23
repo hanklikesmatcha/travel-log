@@ -13,6 +13,32 @@ beforeAll(() => {
   jest.spyOn(console, 'log').mockImplementation(jest.fn())
 })
 
+describe('GET /', () => {
+  it('reads all countries', () => {
+    db.readCountries.mockReturnValue(
+      Promise.resolve([
+        { id: 1, country: 'UK' },
+        { id: 2, country: 'Canada' },
+      ])
+    )
+    return request(server)
+      .get('/api/v1/countries')
+      .then((res) => {
+        expect(res.body).toHaveLength(2)
+        expect(res.body[0].country).toBe('UK')
+        expect(res.body[1].id).toBe(2)
+      })
+  })
+  it('returns 500 and logs error message when error', () => {
+    db.readCountries.mockImplementation(() => Promise.reject('error'))
+    return request(server)
+      .get('/api/v1/countries')
+      .then((res) => {
+        expect(res.status).toBe(500)
+      })
+  })
+})
+
 describe('DELETE', () => {
   it('deletes a country', () => {
     const fakeData = [{ id: 1 }, { id: 2 }, { id: 3 }]
@@ -23,6 +49,14 @@ describe('DELETE', () => {
       .send({ id: 1 })
       .then((res) => {
         expect(res.status).toBe(200)
+      })
+  })
+  it('returns 500 and logs error message when error', () => {
+    db.deleteCountry.mockImplementation(() => Promise.reject('error'))
+    return request(server)
+      .delete('/api/v1/countries/2')
+      .then((res) => {
+        expect(res.status).toBe(500)
       })
   })
 })
