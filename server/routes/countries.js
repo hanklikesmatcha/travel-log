@@ -6,8 +6,8 @@ const router = express.Router()
 router.post('/', (req, res) => {
   const countryName = req.body
 
-  db.addCountry(countryName.country)
-    .then(() => db.getCountries())
+  db.createCountry(countryName.country)
+    .then(() => db.readCountries())
     .then((countries) => res.json(countries))
     .catch((e) => {
       console.error(e)
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 
 //GET /api/v1/countries
 router.get('/', (req, res) => {
-  db.getCountries()
+  db.readCountries()
     .then((countries) => {
       res.json(countries)
     })

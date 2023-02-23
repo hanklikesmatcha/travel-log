@@ -1,10 +1,10 @@
 const connection = require('./connection')
 
-function getCountries(db = connection) {
+function readCountries(db = connection) {
   return db('countries').select()
 }
 
-function addCountry(countryName, db = connection) {
+function createCountry(countryName, db = connection) {
   return db('countries').insert({ country: countryName })
 }
 
@@ -12,4 +12,4 @@ function deleteCountry(id, db = connection) {
   return db('countries').where('id', id).del()
 }
 
-module.exports = { getCountries, addCountry, deleteCountry }
+module.exports = { createCountry, readCountries, deleteCountry }
