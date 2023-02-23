@@ -12,8 +12,18 @@ beforeEach(() => {
   return testDb.seed.run()
 })
 
+describe('getCountries', () => {
+  it('returns an array of countries', () => {
+    return db.getCountries(testDb).then((countries) => {
+      expect(countries).toHaveLength(3)
+      expect(countries[0].country).toBe('Spain')
+      return null
+    })
+  })
+})
+
 describe('deleteCountry', () => {
-  test('deletes a country', () => {
+  it('deletes a country', () => {
     return db
       .deleteCountry(1, testDb)
       .then(() => {
