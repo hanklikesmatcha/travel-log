@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import AddCountry from './AddCountry'
 
-function Home() {
+function Country() {
   const countries = useSelector((state) => state.countries)
   return (
     <div>
@@ -20,4 +20,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Country
