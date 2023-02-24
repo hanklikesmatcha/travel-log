@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { Center } from '@mantine/core'
 
-import Home from './Home'
+import Country from './Country'
 import Cities from './Cities'
 import Footer from './Footer'
 
@@ -21,7 +21,7 @@ function App() {
     <>
       <Center style={{ width: 1400, height: 500 }}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Country />} />
           <Route path="/:countryId" element={<Cities />} />
         </Routes>
       </Center>
