@@ -3,7 +3,7 @@ import {
   addCountry,
   deleteCountry,
   updateCountry,
-} from '../apis/coutries'
+} from '../apis/countries'
 
 export const SHOW_COUNTRIES = 'SHOW_COUNTRIES'
 export const SHOW_ERROR = 'SHOW_ERROR'
@@ -47,7 +47,7 @@ export function countryAdded(country) {
 export function addNewCountry(countryName) {
   return (dispatch) => {
     addCountry(countryName)
-      .then((countryName) => dispatch(receiveCountries(countryName)))
+      .then((countryName) => dispatch(countryAdded(countryName)))
       .catch((err) => {
         dispatch(showError(err.message))
       })
