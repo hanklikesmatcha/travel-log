@@ -27,13 +27,9 @@ export function showError(errorMessage) {
 
 export function showCountries() {
   return (dispatch) => {
-    return getCountries()
-      .then((countries) => {
-        dispatch(receiveCountries(countries))
-      })
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
+    return getCountries().then((countries) => {
+      dispatch(receiveCountries(countries))
+    })
   }
 }
 
@@ -44,13 +40,11 @@ export function countryAdded(country) {
   }
 }
 
-export function addNewCountry(countryName) {
+export function addNewCountry(country) {
   return (dispatch) => {
-    addCountry(countryName)
-      .then((countryName) => dispatch(countryAdded(countryName)))
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
+    return addCountry(country).then((country) => {
+      dispatch(countryAdded(country))
+    })
   }
 }
 
@@ -63,13 +57,9 @@ export function countryDeleted(id) {
 
 export function delCountry(id) {
   return (dispatch) => {
-    deleteCountry(id)
-      .then(() => {
-        dispatch(countryDeleted(id))
-      })
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
+    return deleteCountry(id).then(() => {
+      dispatch(countryDeleted(id))
+    })
   }
 }
 
@@ -82,12 +72,8 @@ export function countryUpdated(country) {
 
 export function updatedCountry(id, country) {
   return (dispatch) => {
-    updateCountry(id, country)
-      .then((country) => {
-        dispatch(countryUpdated(country))
-      })
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
+    return updateCountry(id, country).then((country) => {
+      dispatch(countryUpdated(country))
+    })
   }
 }
