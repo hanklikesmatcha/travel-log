@@ -23,7 +23,7 @@ function AddCountry() {
     <>
       <h1>Where else have you been?</h1>
       <Input
-        placeholder="Enter New City"
+        placeholder="Enter New Country"
         size="xl"
         name="country"
         value={country || ''}
