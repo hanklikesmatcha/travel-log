@@ -6,10 +6,10 @@ export function getCountries() {
   })
 }
 
-export function addCountry(name) {
+export function addCountry(country) {
   return request
     .post(`/api/v1/countries`)
-    .send({ name })
+    .send({ country })
     .then((res) => res.body)
 }
 
