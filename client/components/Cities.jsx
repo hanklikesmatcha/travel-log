@@ -42,8 +42,6 @@ function CityInfo({ id, city, handleDelete }) {
     <div>
       <h3>{city}</h3>
       <CloseButton size="xl" iconSize={20} onClick={() => handleDelete(id)} />
-      {/* Delete
-      </CloseButton> */}
     </div>
   )
 }
