@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { postCityByCountryId } from '../actions/cities'
 
 import { Button, Input } from '@mantine/core'
+import GoBack from './GoBack'
 
 function AddCity() {
   const { countryId } = useParams()
@@ -46,6 +47,8 @@ function AddCity() {
       <Button color="green" compact uppercase onClick={handleAdd}>
         Enter New City
       </Button>
+      <br />
+      <GoBack />
     </>
   )
 }
