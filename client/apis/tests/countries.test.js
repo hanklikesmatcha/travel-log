@@ -1,6 +1,6 @@
 import nock from 'nock'
 
-import { addCountry, deleteCountry, getCountries } from '../countries'
+import { addCountry, getCountries, updateCountry } from '../countries'
 
 describe('getCountries', () => {
   it('get countries from the api', () => {
@@ -22,6 +22,18 @@ describe('addCountry', () => {
 
     return addCountry('Italy').then((res) => {
       expect(res.country).toBe('Italy')
+    })
+  })
+})
+
+describe('updateCountry', () => {
+  it('updates a country', () => {
+    const scope = nock('http://localhost')
+      .patch('/api/v1/countries/1')
+      .reply(200, { id: 1, country: 'Italy' })
+    return updateCountry(1).then((res) => {
+      expect(res.country).toBe('Italy')
+      expect(scope.isDone()).toBe(true)
     })
   })
 })
