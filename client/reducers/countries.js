@@ -13,7 +13,7 @@ export default function countriesReducer(state = [], action) {
     case ADD_COUNTRY:
       return payload
     case DELETE_COUNTRY:
-      return payload
+      return state.filter((country) => country.id !== payload)
     case UPDATE_COUNTRY:
       return state.map((country) =>
         country.id === payload.id ? payload : country
