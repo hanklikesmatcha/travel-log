@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { delCountry } from '../actions/countries'
 import AddCountry from './AddCountry'
 
+import Home from './Home'
+
 import { CloseButton, Button } from '@mantine/core'
 
 function Country() {
@@ -16,6 +18,7 @@ function Country() {
 
   return (
     <div>
+      <Home />
       <h2>
         {countries &&
           countries.map((country) => (
