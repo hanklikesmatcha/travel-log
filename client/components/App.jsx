@@ -28,7 +28,6 @@ function App() {
         <Route path="/country" element={<Country />} />
         <Route path="/:countryId" element={<Cities />} />
       </Routes>
-      <Footer />
     </>
   )
 }
