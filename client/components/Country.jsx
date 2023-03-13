@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { delCountry } from '../actions/countries'
 import AddCountry from './AddCountry'
 
-import { CloseButton } from '@mantine/core'
+import { CloseButton, Button } from '@mantine/core'
 
 function Country() {
   const dispatch = useDispatch()
@@ -20,12 +20,14 @@ function Country() {
         {countries &&
           countries.map((country) => (
             <Link to={`/${country.id}`} key={country.id}>
-              <button>{country.country}</button>
-              <CountryInfo
-                key={country.id}
-                id={country.id}
-                handleDelete={handleDelete}
-              />
+              <Button.Group>
+                <Button variant="default">{country.country}</Button>
+                <CountryInfo
+                  key={country.id}
+                  id={country.id}
+                  handleDelete={handleDelete}
+                />
+              </Button.Group>
             </Link>
           ))}
       </h2>
