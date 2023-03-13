@@ -8,6 +8,9 @@ import Country from './Country'
 import Cities from './Cities'
 import Footer from './Footer'
 import Home from './Home'
+import Nav from './Nav'
+import Me from './AboutMe'
+
 import { showCountries } from '../actions/countries'
 
 function App() {
@@ -19,9 +22,10 @@ function App() {
 
   return (
     <>
-      <Home />
+      <Nav />
       <Routes>
-        <Route path="/" element={<Country />} />
+        <Route path="/aboutMe" element={<Me />} />
+        <Route path="/country" element={<Country />} />
         <Route path="/:countryId" element={<Cities />} />
       </Routes>
       <Footer />
