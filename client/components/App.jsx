@@ -6,8 +6,6 @@ import { createStyles } from '@mantine/core'
 
 import Country from './Country'
 import Cities from './Cities'
-import Footer from './Footer'
-import Home from './Home'
 import Nav from './Nav'
 import Me from './AboutMe'
 
