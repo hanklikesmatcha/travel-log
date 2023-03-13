@@ -5,8 +5,8 @@ import { Button } from '@mantine/core'
 function GoBack() {
   return (
     <>
-      <Button Button color="green" compact uppercase>
-        <Link to={'/'}>Go back to main page</Link>
+      <Button color="green" compact uppercase>
+        <Link to={'/'}>Go back to country list</Link>
       </Button>
     </>
   )
