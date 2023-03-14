@@ -44,6 +44,10 @@ function Me() {
           </li>
         </ul>
       </h5>
+      <h5>
+        If you would like to get in touch with me, please email me at
+        helenheajilee@gmail.com or call on 021-165-3595.
+      </h5>
       <Link to="http://www.linkedin.com/in/helen-heaji-lee" target="_blank">
         Click here to visit my LinkedIn profile
       </Link>
