@@ -5,7 +5,7 @@ import { delCountry } from '../actions/countries'
 import AddCountry from './AddCountry'
 
 import Home from './Home'
-
+import Map from './Map'
 import { CloseButton, Button } from '@mantine/core'
 
 function Country() {
@@ -35,6 +35,7 @@ function Country() {
           ))}
       </h2>
       <AddCountry />
+      <Map />
     </div>
   )
 }
