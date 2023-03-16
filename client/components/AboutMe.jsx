@@ -5,7 +5,7 @@ import { Image, createStyles } from '@mantine/core'
 
 const useStyles = createStyles(() => ({
   header: {
-    fontFamily: 'Verdana, sans-serif',
+    fontFamily: 'Bayon, sans-serif',
   },
 
   para: {
@@ -19,11 +19,11 @@ function Me() {
     <>
       <h2 className={classes.header}>Welcome to my portfolio!</h2>
       <Image
-        maw={240}
+        maw={360}
         mx="auto"
         radius="md"
         src="/1.jpeg"
-        alt="Random image"
+        alt="Helen in NYC"
         caption="Helen in NYC"
       />
       <h5 className={classes.para}>
