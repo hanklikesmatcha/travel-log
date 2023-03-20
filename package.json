@@ -42,7 +42,8 @@
     "knex": "^2.3.0",
     "pg": "^8.8.0",
     "sqlite3": "^5.1.2",
-    "superagent": "7.1.1"
+    "superagent": "7.1.1",
+    "tabler-icons-react": "^1.56.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",
