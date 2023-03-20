@@ -6,15 +6,12 @@ import AddCountry from './AddCountry'
 
 import Home from './Home'
 import Map from './Map'
-import { CloseButton, Button } from '@mantine/core'
+import { Button, ActionIcon } from '@mantine/core'
+import { Trash } from 'tabler-icons-react'
 
 function Country() {
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.countries)
-
-  function handleDelete(id) {
-    dispatch(delCountry(id))
-  }
 
   return (
     <div>
@@ -25,25 +22,15 @@ function Country() {
             <Link to={`/${country.id}`} key={country.id}>
               <Button.Group>
                 <Button variant="default">{country.country}</Button>
-                <CountryInfo
-                  key={country.id}
-                  id={country.id}
-                  handleDelete={handleDelete}
-                />
+                <ActionIcon>
+                  <Trash onClick={() => dispatch(delCountry(country.id))} />
+                </ActionIcon>
               </Button.Group>
             </Link>
           ))}
       </h2>
       <AddCountry />
       <Map />
-    </div>
-  )
-}
-
-function CountryInfo({ id, handleDelete }) {
-  return (
-    <div>
-      <CloseButton size="xl" iconSize={20} onClick={() => handleDelete(id)} />
     </div>
   )
 }
