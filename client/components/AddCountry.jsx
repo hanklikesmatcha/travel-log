@@ -22,17 +22,19 @@ function AddCountry() {
   return (
     <>
       <h1>Where else have you been?</h1>
-      <Input
-        placeholder="Enter New Country"
-        size="xl"
-        name="country"
-        value={country || ''}
-        onChange={handleChange}
-      />
-      <br />
-      <Button color="green" compact uppercase onClick={handleSubmit}>
-        Enter New Country
-      </Button>
+      <form onSubmit={handleSubmit}>
+        <Input
+          placeholder="Enter New Country"
+          size="xl"
+          name="country"
+          value={country}
+          onChange={handleChange}
+        />
+        <br />
+        <Button color="green" compact uppercase type="submit">
+          Enter New Country
+        </Button>
+      </form>
     </>
   )
 }
