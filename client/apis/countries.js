@@ -14,7 +14,7 @@ export function addCountry(country) {
 }
 
 export function deleteCountry(id) {
-  return request.delete(`/api/v1/countries/${id}`).then((res) => {
+  return request.del(`/api/v1/countries/${id}`).then((res) => {
     res.body
   })
 }
