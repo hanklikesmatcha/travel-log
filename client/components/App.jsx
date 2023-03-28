@@ -2,8 +2,6 @@ import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { createStyles } from '@mantine/core'
-
 import Country from './Country'
 import Cities from './Cities'
 import Nav from './Nav'

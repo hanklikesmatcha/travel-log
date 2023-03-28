@@ -4,7 +4,7 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api'
 class Map extends Component {
   render() {
     return (
-      <LoadScript googleMapsApiKey="process.env.apiKey">
+      <LoadScript googleMapsApiKey="AIzaSyBCnAamP00Dp816d1JRqTtUPPAkRGAQtqk">
         <GoogleMap
           id="example-map"
           mapContainerStyle={{
