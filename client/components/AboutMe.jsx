@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Nav from './Nav'
+
 import { Link } from 'react-router-dom'
 import { Image, createStyles, Center, Grid } from '@mantine/core'
 
@@ -17,6 +19,7 @@ export default function App() {
   const { classes } = useStyles()
   return (
     <>
+      <Nav />
       <Center>
         <h1 className={classes.header}>Welcome to my portfolio!</h1>
       </Center>
