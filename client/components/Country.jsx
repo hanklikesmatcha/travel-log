@@ -19,14 +19,14 @@ function Country() {
       <h2>
         {countries &&
           countries.map((country) => (
-            <Link to={`/${country.id}`} key={country.id}>
-              <Button.Group>
+            <Button.Group key={country.id}>
+              <Link to={`/${country.id}`} key={country.id}>
                 <Button variant="default">{country.country}</Button>
-                <ActionIcon>
-                  <Trash onClick={() => dispatch(delCountry(country.id))} />
-                </ActionIcon>
-              </Button.Group>
-            </Link>
+              </Link>
+              <ActionIcon>
+                <Trash onClick={() => dispatch(delCountry(country.id))} />
+              </ActionIcon>
+            </Button.Group>
           ))}
       </h2>
       <AddCountry />
