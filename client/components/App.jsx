@@ -18,8 +18,8 @@ function App() {
 
   return (
     <>
-      <Nav />
       <Routes>
+        <Route path="/" element={<Nav />} />
         <Route path="/aboutMe" element={<Me />} />
         <Route path="/country" element={<Country />} />
         <Route path="/:countryId" element={<Cities />} />
