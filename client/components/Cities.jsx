@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom'
 import { deleteCityByCountryId, fetchCountryCity } from '../actions/cities'
 
 import AddCity from './AddCity'
-
-import { CloseButton, ActionIcon } from '@mantine/core'
-import { Edit } from 'tabler-icons-react'
+import Nav from './Nav'
+import { ActionIcon } from '@mantine/core'
+import { Edit, Trash } from 'tabler-icons-react'
 
 function Cities() {
   const dispatch = useDispatch()
@@ -23,6 +23,7 @@ function Cities() {
 
   return (
     <div>
+      <Nav />
       <h1>Which cities have you been to?</h1>
       {cities &&
         cities?.map((city, i) => (
@@ -42,7 +43,9 @@ function CityInfo({ id, city, handleDelete }) {
   return (
     <div>
       <h3>{city}</h3>
-      <CloseButton size="xl" iconSize={20} onClick={() => handleDelete(id)} />
+      <ActionIcon>
+        <Trash size="xl" iconSize={20} onClick={() => handleDelete(id)} />
+      </ActionIcon>
       <ActionIcon>
         <Edit />
       </ActionIcon>
