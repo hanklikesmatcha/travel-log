@@ -5,7 +5,8 @@ import { deleteCityByCountryId, fetchCountryCity } from '../actions/cities'
 
 import AddCity from './AddCity'
 
-import { CloseButton } from '@mantine/core'
+import { CloseButton, ActionIcon } from '@mantine/core'
+import { Edit } from 'tabler-icons-react'
 
 function Cities() {
   const dispatch = useDispatch()
@@ -42,6 +43,9 @@ function CityInfo({ id, city, handleDelete }) {
     <div>
       <h3>{city}</h3>
       <CloseButton size="xl" iconSize={20} onClick={() => handleDelete(id)} />
+      <ActionIcon>
+        <Edit />
+      </ActionIcon>
     </div>
   )
 }
