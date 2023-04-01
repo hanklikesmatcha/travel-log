@@ -16,19 +16,17 @@ function Country() {
   return (
     <div>
       <Home />
-      <h2>
-        {countries &&
-          countries.map((country) => (
-            <Button.Group key={country.id}>
-              <Link to={`/${country.id}`} key={country.id}>
-                <Button variant="default">{country.country}</Button>
-              </Link>
-              <ActionIcon>
-                <Trash onClick={() => dispatch(delCountry(country.id))} />
-              </ActionIcon>
-            </Button.Group>
-          ))}
-      </h2>
+      {countries &&
+        countries.map((country) => (
+          <Button.Group key={country.id}>
+            <Link to={`/${country.id}`} key={country.id}>
+              <Button variant="default">{country.country}</Button>
+            </Link>
+            <ActionIcon>
+              <Trash onClick={() => dispatch(delCountry(country.id))} />
+            </ActionIcon>
+          </Button.Group>
+        ))}
       <AddCountry />
       <Map />
     </div>
