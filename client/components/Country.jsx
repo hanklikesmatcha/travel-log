@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { delCountry, updatedCountry } from '../actions/countries'
+import { delCountry, updatedCountry, showCountries } from '../actions/countries'
 import AddCountry from './AddCountry'
 
 import Home from './Home'
@@ -9,12 +9,40 @@ import Map from './Map'
 import { Button, ActionIcon, Input } from '@mantine/core'
 import { Trash, Edit } from 'tabler-icons-react'
 
-function Country({ country }) {
+function Country() {
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.countries)
 
-  const [editedCountry, setEditedCountry] = useState(country.country)
-  const [isEditing, setIsEditing] = useState(false)
+  console.log(countries)
+
+  useEffect(() => {
+    dispatch(showCountries())
+  }, [dispatch])
+
+  if (!countries || countries.length === 0) {
+    return <div>Loading countries...</div>
+  }
+
+  const [editingCountry, setEditingCountry] = useState(null)
+  const [newCountryName, setNewCountryName] = useState('')
+
+  function startEditing(country) {
+    setEditingCountry(country)
+    setNewCountryName(country.country)
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    dispatch(updatedCountry(editingCountry.id, { country: newCountryName }))
+      .then((updatedCountry) => {
+        dispatch(showCountries())
+        setEditingCountry(updatedCountry)
+        setNewCountryName(updatedCountry.country)
+      })
+      .catch((e) => {
+        console.error(e)
+      })
+  }
 
   return (
     <div>
@@ -22,34 +50,43 @@ function Country({ country }) {
       {countries &&
         countries.map((country) => (
           <Button.Group key={country.id}>
-            <Link to={`/${country.id}`} key={country.id}>
-              <Button variant="default">{country.country}</Button>
-            </Link>
-            <ActionIcon>
-              <Trash onClick={() => dispatch(delCountry(country.id))} />
-            </ActionIcon>
-            <ActionIcon>
-              <Edit onClick={() => setIsEditing(!isEditing)} />
-            </ActionIcon>
-
-            {isEditing ? (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault()
-                  dispatch(updatedCountry(country.id, editedCountry))
-                  setIsEditing(false)
-                }}
-              >
+            {editingCountry && editingCountry.id === country.id ? (
+              <form onSubmit={handleSubmit}>
                 <Input
-                  placeholder={country.country}
-                  value={editedCountry}
-                  onChange={(e) => {
-                    setEditedCountry(e.target.value)
-                  }}
+                  placeholder="Enter New Country Name"
+                  size="xl"
+                  name="newCountryName"
+                  value={editingCountry ? newCountryName : ''}
+                  onChange={(e) => setNewCountryName(e.target.value)}
+                  onKeyDown={(e) => setNewCountryName(e.target.value)}
                 />
+                <Button color="green" compact uppercase type="submit">
+                  Save
+                </Button>
+                <Button
+                  color="red"
+                  compact
+                  uppercase
+                  type="button"
+                  onClick={() => setEditingCountry(null)}
+                >
+                  Cancel
+                </Button>
               </form>
             ) : (
-              country.country
+              <>
+                <Link to={`/${country.id}`} className="card-link">
+                  <Button variant="default">
+                    {country.country.toString()}
+                  </Button>
+                </Link>
+                <ActionIcon>
+                  <Edit onClick={() => startEditing(country)} />
+                </ActionIcon>
+                <ActionIcon>
+                  <Trash onClick={() => dispatch(delCountry(country.id))} />
+                </ActionIcon>
+              </>
             )}
           </Button.Group>
         ))}
