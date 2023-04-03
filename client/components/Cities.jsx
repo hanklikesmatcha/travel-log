@@ -5,13 +5,31 @@ import { deleteCityByCountryId, fetchCountryCity } from '../actions/cities'
 
 import AddCity from './AddCity'
 import Nav from './Nav'
-import { ActionIcon } from '@mantine/core'
+import { ActionIcon, createStyles, useMantineTheme } from '@mantine/core'
 import { Edit, Trash } from 'tabler-icons-react'
+
+const useStyles = createStyles((theme) => ({
+  header: {
+    fontFamily: 'Bayon, sans-serif',
+  },
+
+  para: {
+    fontFamily: 'Monaco, Courier, monospace',
+  },
+  container: {
+    backgroundColor: '#BAC8FF',
+    minHeight: '100vh',
+    padding: theme.spacing.xl,
+  },
+}))
 
 function Cities() {
   const dispatch = useDispatch()
   const cities = useSelector((state) => state.cities)
   const { countryId } = useParams()
+
+  const theme = useMantineTheme()
+  const { classes } = useStyles({ theme })
 
   useEffect(() => {
     dispatch(fetchCountryCity(countryId))
@@ -22,7 +40,7 @@ function Cities() {
   }
 
   return (
-    <div>
+    <div className={classes.container}>
       <Nav />
       <h1>Which cities have you been to?</h1>
       {cities &&

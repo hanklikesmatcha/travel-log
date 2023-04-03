@@ -20,10 +20,7 @@ const useStyles = createStyles((theme) => ({
     fontFamily: 'Monaco, Courier, monospace',
   },
   container: {
-    backgroundColor:
-      theme.colorScheme === 'dark'
-        ? theme.colors.dark[7]
-        : theme.colors.blue[1],
+    backgroundColor: '#BAC8FF',
     minHeight: '100vh',
     padding: theme.spacing.xl,
   },

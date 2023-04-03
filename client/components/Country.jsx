@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { delCountry, updatedCountry, showCountries } from '../actions/countries'
 import AddCountry from './AddCountry'
-
+import Nav from './Nav'
 import Home from './Home'
 import Map from './Map'
 import {
@@ -24,10 +24,7 @@ const useStyles = createStyles((theme) => ({
     fontFamily: 'Monaco, Courier, monospace',
   },
   container: {
-    backgroundColor:
-      theme.colorScheme === 'dark'
-        ? theme.colors.dark[7]
-        : theme.colors.blue[1],
+    backgroundColor: '#BAC8FF',
     minHeight: '100vh',
     padding: theme.spacing.xl,
   },
@@ -73,7 +70,8 @@ function Country() {
 
   return (
     <div className={classes.container}>
-      <Home />
+      <Nav />
+      <h2>Welcome to Travel Log!</h2>
       {countries &&
         countries.map((country) => (
           <Button.Group key={country.id}>
