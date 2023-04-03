@@ -6,12 +6,39 @@ import AddCountry from './AddCountry'
 
 import Home from './Home'
 import Map from './Map'
-import { Button, ActionIcon, Input } from '@mantine/core'
+import {
+  Button,
+  ActionIcon,
+  Input,
+  createStyles,
+  useMantineTheme,
+} from '@mantine/core'
 import { Trash, Edit } from 'tabler-icons-react'
+
+const useStyles = createStyles((theme) => ({
+  header: {
+    fontFamily: 'Bayon, sans-serif',
+  },
+
+  para: {
+    fontFamily: 'Monaco, Courier, monospace',
+  },
+  container: {
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[7]
+        : theme.colors.blue[1],
+    minHeight: '100vh',
+    padding: theme.spacing.xl,
+  },
+}))
 
 function Country() {
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.countries)
+
+  const theme = useMantineTheme()
+  const { classes } = useStyles({ theme })
 
   console.log(countries)
 
@@ -45,7 +72,7 @@ function Country() {
   }
 
   return (
-    <div>
+    <div className={classes.container}>
       <Home />
       {countries &&
         countries.map((country) => (
