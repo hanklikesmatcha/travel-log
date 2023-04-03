@@ -8,7 +8,7 @@ class Map extends Component {
         <GoogleMap
           id="example-map"
           mapContainerStyle={{
-            height: '400px',
+            height: '800px',
             width: '100%',
           }}
           zoom={8}

@@ -2,12 +2,30 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNewCountry } from '../actions/countries'
 
-import { Button, Input } from '@mantine/core'
+import { Button, Input, createStyles, useMantineTheme } from '@mantine/core'
+
+const useStyles = createStyles((theme) => ({
+  header: {
+    fontFamily: 'Bayon, sans-serif',
+  },
+
+  para: {
+    fontFamily: 'Monaco, Courier, monospace',
+  },
+  container: {
+    backgroundColor: '#BAC8FF',
+    minHeight: '100vh',
+    padding: theme.spacing.xl,
+  },
+}))
 
 function AddCountry() {
   const [country, setCountry] = useState('')
 
   const dispatch = useDispatch()
+
+  const theme = useMantineTheme()
+  const { classes } = useStyles({ theme })
 
   function handleChange(event) {
     setCountry(event.target.value)
@@ -21,14 +39,18 @@ function AddCountry() {
 
   return (
     <>
-      <h1>Where else have you been?</h1>
-      <form onSubmit={handleSubmit}>
+      <h2 className={classes.header}>Where else have you been?</h2>
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: 'inline-flex', alignItems: 'center' }}
+      >
         <Input
           placeholder="Enter New Country"
-          size="xl"
+          size="large"
           name="country"
           value={country}
           onChange={handleChange}
+          style={{ marginRight: '10px' }}
         />
         <br />
         <Button color="green" compact uppercase type="submit">

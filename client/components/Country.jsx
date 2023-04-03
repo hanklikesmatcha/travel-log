@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { delCountry, updatedCountry, showCountries } from '../actions/countries'
 import AddCountry from './AddCountry'
 import Nav from './Nav'
-import Home from './Home'
 import Map from './Map'
 import {
   Button,
@@ -71,7 +70,7 @@ function Country() {
   return (
     <div className={classes.container}>
       <Nav />
-      <h2>Welcome to Travel Log!</h2>
+      <h2 className={classes.header}>Welcome to Travel Log!</h2>
       {countries &&
         countries.map((country) => (
           <Button.Group key={country.id}>
@@ -116,6 +115,7 @@ function Country() {
           </Button.Group>
         ))}
       <AddCountry />
+      <p></p>
       <Map />
     </div>
   )

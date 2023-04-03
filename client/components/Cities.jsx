@@ -42,7 +42,7 @@ function Cities() {
   return (
     <div className={classes.container}>
       <Nav />
-      <h1>Which cities have you been to?</h1>
+      <h1 className={classes.header}>Which cities have you been to?</h1>
       {cities &&
         cities?.map((city, i) => (
           <CityInfo

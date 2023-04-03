@@ -105,8 +105,9 @@ export default function App() {
 
       <Center>
         <h3 className={classes.para}>
-          In this portfolio, I showcase some of my projects I worked on during
-          my time at Dev Academy
+          I decided to build Travel Log as I love to travel and keep lists of
+          countries and cities I&apos;ve been so far. Tech used are JavaScript,
+          React, Redux, MySQL, and used Mantine for styles.
         </h3>
       </Center>
       <Center>

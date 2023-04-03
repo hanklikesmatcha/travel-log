@@ -6,7 +6,9 @@ function GoBack() {
   return (
     <>
       <Button color="green" compact uppercase>
-        <Link to={'/country'}>Go back to country list</Link>
+        <Link to={'/country'} style={{ color: 'white' }}>
+          Go back to country list
+        </Link>
       </Button>
     </>
   )

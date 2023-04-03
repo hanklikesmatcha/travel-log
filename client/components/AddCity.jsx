@@ -3,14 +3,32 @@ import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { postCityByCountryId } from '../actions/cities'
 
-import { Button, Input } from '@mantine/core'
+import { Button, Input, createStyles, useMantineTheme } from '@mantine/core'
 import GoBack from './GoBack'
+
+const useStyles = createStyles((theme) => ({
+  header: {
+    fontFamily: 'Bayon, sans-serif',
+  },
+
+  para: {
+    fontFamily: 'Monaco, Courier, monospace',
+  },
+  container: {
+    backgroundColor: '#BAC8FF',
+    minHeight: '100vh',
+    padding: theme.spacing.xl,
+  },
+}))
 
 function AddCity() {
   const { countryId } = useParams()
   const [newCity, setNewCity] = useState({
     city: '',
   })
+
+  const theme = useMantineTheme()
+  const { classes } = useStyles({ theme })
 
   const dispatch = useDispatch()
 
@@ -35,19 +53,25 @@ function AddCity() {
 
   return (
     <>
-      <h1>Where else have you been?</h1>
-      <Input
-        placeholder="Enter New City"
-        size="xl"
-        name="city"
-        value={city || ''}
-        onChange={handleChange}
-      />
-      <br />
-      <Button color="green" compact uppercase onClick={handleAdd}>
-        Enter New City
-      </Button>
-      <br />
+      <h2 className={classes.header}>Where else have you been?</h2>
+      <form
+        onSubmit={handleAdd}
+        style={{ display: 'inline-flex', alignItems: 'center' }}
+      >
+        <Input
+          placeholder="Enter New City"
+          size="large"
+          name="city"
+          value={city || ''}
+          onChange={handleChange}
+          style={{ marginRight: '10px' }}
+        />
+        <br />
+        <Button color="green" compact uppercase onClick={handleAdd}>
+          Enter New City
+        </Button>
+      </form>
+      <p></p>
       <GoBack />
     </>
   )
