@@ -19,8 +19,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Nav />} />
-        <Route path="/aboutMe" element={<Me />} />
+        {/* <Route path="/" element={<Nav />} /> */}
+        <Route path="/" element={<Me />} />
         <Route path="/country" element={<Country />} />
         <Route path="/:countryId" element={<Cities />} />
       </Routes>

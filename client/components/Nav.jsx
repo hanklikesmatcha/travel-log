@@ -14,7 +14,7 @@ function Nav() {
           style={{ marginRight: '10px' }}
         >
           <Link
-            to="/aboutMe"
+            to="/"
             style={{
               textDecoration: 'none',
               textTransform: 'uppercase',
