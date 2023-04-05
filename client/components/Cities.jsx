@@ -96,18 +96,4 @@ function Cities() {
   )
 }
 
-function CityInfo({ id, city, handleDelete }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <h3 style={{ marginRight: '10px' }}>{city}</h3>
-      <ActionIcon>
-        <Trash size="xl" iconSize={20} onClick={() => handleDelete(id)} />
-      </ActionIcon>
-      <ActionIcon>
-        <Edit />
-      </ActionIcon>
-    </div>
-  )
-}
-
 export default Cities
