@@ -78,13 +78,11 @@ function Cities() {
               </form>
             ) : (
               <>
-                <h3 style={{ marginRight: '10px' }}>{city.city}</h3>
+                <h3 style={{ marginRight: '10px' }} className={classes.header}>
+                  {city.city}
+                </h3>
                 <ActionIcon>
-                  <Trash
-                    size="xl"
-                    iconSize={20}
-                    onClick={() => handleDelete(city.id)}
-                  />
+                  <Trash onClick={() => handleDelete(city.id)} />
                 </ActionIcon>
                 <ActionIcon>
                   <Edit onClick={() => handleEdit(city)} />
