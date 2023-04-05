@@ -17,7 +17,7 @@ export function addCityByCountryId(countryId, newCity) {
     .then((res) => res.body)
 }
 
-export function editCity(countryId, city) {
+export function editCityByCountryId(countryId, city) {
   return request
     .patch(`api/v1/cities/${countryId}`)
     .send({ city })

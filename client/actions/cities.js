@@ -2,6 +2,7 @@ import {
   getCitiesByCountryId,
   deleteCityCountryId,
   addCityByCountryId,
+  editCityByCountryId,
 } from '../apis/cities'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
@@ -83,9 +84,10 @@ export function cityEdited(city) {
 
 export function editCity(id, city) {
   return (dispatch) => {
-    editCity(id, city)
+    return editCityByCountryId(id, city)
       .then((city) => {
         dispatch(cityEdited(city))
+        dispatch(fetchCountryCity(city.countryId))
       })
       .catch((err) => {
         dispatch(showError(err.message))
