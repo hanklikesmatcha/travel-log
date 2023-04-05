@@ -48,3 +48,16 @@ describe('updateCity', () => {
       })
   })
 })
+
+describe('deleteCity', () => {
+  it('deletes a city', () => {
+    return db
+      .deleteCity(2, testDb)
+      .then(() => {
+        return db.readCitiesByCountryId(2, testDb)
+      })
+      .then((cities) => {
+        expect(cities).toHaveLength(0)
+      })
+  })
+})
