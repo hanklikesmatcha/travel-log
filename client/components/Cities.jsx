@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { deleteCityByCountryId, fetchCountryCity } from '../actions/cities'
+import {
+  deleteCityByCountryId,
+  fetchCountryCity,
+  editCity,
+} from '../actions/cities'
 
 import AddCity from './AddCity'
 import Nav from './Nav'
@@ -21,13 +25,17 @@ const useStyles = createStyles((theme) => ({
     minHeight: '100vh',
     padding: theme.spacing.xl,
   },
+  editForm: {
+    display: 'flex',
+    alignItems: 'center',
+  },
 }))
 
 function Cities() {
   const dispatch = useDispatch()
   const cities = useSelector((state) => state.cities)
   const { countryId } = useParams()
-
+  const [editedCity, setEditedCity] = useState(null)
   const theme = useMantineTheme()
   const { classes } = useStyles({ theme })
 
@@ -39,18 +47,51 @@ function Cities() {
     dispatch(deleteCityByCountryId(countryId, cityId))
   }
 
+  function handleEdit(city) {
+    setEditedCity(city)
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    dispatch(editCity(editedCity.id, editedCity.city))
+    setEditedCity(null)
+  }
+
+  function handleChange(event) {
+    setEditedCity({ ...editedCity, city: event.target.value })
+  }
   return (
     <div className={classes.container}>
       <Nav />
       <h1 className={classes.header}>Which cities have you been to?</h1>
       {cities &&
         cities?.map((city, i) => (
-          <CityInfo
-            key={i}
-            id={city.id}
-            city={city.city}
-            handleDelete={handleDelete}
-          />
+          <div key={i} style={{ display: 'flex', alignItems: 'center' }}>
+            {editedCity?.id === city.id ? (
+              <form onSubmit={handleSubmit} className={classes.editForm}>
+                <input
+                  type="text"
+                  value={editedCity.city}
+                  onChange={handleChange}
+                />
+                <button type="submit">Save</button>
+              </form>
+            ) : (
+              <>
+                <h3 style={{ marginRight: '10px' }}>{city.city}</h3>
+                <ActionIcon>
+                  <Trash
+                    size="xl"
+                    iconSize={20}
+                    onClick={() => handleDelete(city.id)}
+                  />
+                </ActionIcon>
+                <ActionIcon>
+                  <Edit onClick={() => handleEdit(city)} />
+                </ActionIcon>
+              </>
+            )}
+          </div>
         ))}
       <AddCity />
     </div>

@@ -15,7 +15,15 @@ export default function citiesReducer(state = [], action) {
     case ADD_CITIES:
       return payload
     case UPDATE_CITY:
-      return state.map((city) => (city.id === payload.id ? payload : city))
+      return {
+        ...state,
+        [action.payload.countryId]: state[action.payload.countryId].map(
+          (city) =>
+            city.id === action.payload.cityId
+              ? { ...city, city: action.payload.updatedCityName }
+              : city
+        ),
+      }
     default:
       return state
   }
