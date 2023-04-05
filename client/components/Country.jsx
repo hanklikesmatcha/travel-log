@@ -36,8 +36,6 @@ function Country() {
   const theme = useMantineTheme()
   const { classes } = useStyles({ theme })
 
-  console.log(countries)
-
   useEffect(() => {
     dispatch(showCountries())
   }, [dispatch])
