@@ -9,7 +9,7 @@ router.post('/:countryId/new', (req, res) => {
 
   const newCity = { city: cities.city, country_id: countryId }
 
-  db.createCity(newCity)
+  db.createCity(countryId, newCity)
     .then(() => db.readCitiesByCountryId(countryId))
     .then((cities) => res.json(cities))
     .catch((e) => {

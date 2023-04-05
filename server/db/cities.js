@@ -1,7 +1,7 @@
 const connection = require('./connection')
 
-function createCity(city, db = connection) {
-  return db('cities').insert(city)
+function createCity(countryId, city, db = connection) {
+  return db('cities').where('country_id', countryId).insert(city)
 }
 
 function readCitiesByCountryId(countryId, db = connection) {
