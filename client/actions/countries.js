@@ -48,32 +48,32 @@ export function addNewCountry(country) {
   }
 }
 
-export function countryDeleted(id) {
+export function countryDeleted(countryId) {
   return {
     type: DELETE_COUNTRY,
-    payload: id,
+    payload: countryId,
   }
 }
 
-export function delCountry(id) {
+export function delCountry(countryId) {
   return (dispatch) => {
-    return deleteCountry(id).then(() => {
-      dispatch(countryDeleted(id))
+    return deleteCountry(countryId).then(() => {
+      dispatch(countryDeleted(countryId))
     })
   }
 }
 
-export function countryUpdated(country) {
+export function countryUpdate(updatedCountry) {
   return {
     type: UPDATE_COUNTRY,
-    payload: country,
+    payload: updatedCountry,
   }
 }
 
-export function updatedCountry(id, country) {
+export function updatedCountry(countryId, updatedCountry) {
   return (dispatch) => {
-    return updateCountry(id, country).then((country) => {
-      dispatch(countryUpdated(country))
+    return updateCountry(countryId, updatedCountry).then((country) => {
+      dispatch(countryUpdate(country))
     })
   }
 }
