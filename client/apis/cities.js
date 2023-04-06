@@ -12,14 +12,15 @@ export function deleteCityCountryId(countryId, cityId) {
 
 export function addCityByCountryId(countryId, newCity) {
   return request
-    .post(`/api/v1/cities/${countryId}/new`)
+    .post(`/api/v1/cities/${countryId}`)
     .send(newCity)
     .then((res) => res.body)
 }
 
 export function editCityByCountryId(countryId, city) {
+  const { cityId } = city
   return request
-    .patch(`api/v1/cities/${countryId}`)
+    .patch(`api/v1/cities/${countryId}/${cityId}`)
     .send({ city })
     .then((res) => res.body)
 }
