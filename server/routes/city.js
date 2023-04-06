@@ -3,7 +3,7 @@ const db = require('../db/cities')
 const router = express.Router()
 
 //POST /api/v1/cities/:countryId/new
-router.post('/:countryId/new', (req, res) => {
+router.post('/:countryId/', (req, res) => {
   const countryId = req.params.countryId
   const cities = req.body
 
