@@ -28,11 +28,15 @@ router.get('/', (req, res) => {
 })
 
 //DELETE /api/v1/countries/:countryId
-router.delete('/:id', (req, res) => {
-  const countryId = Number(req.params.id)
+router.delete('/:countryId', (req, res) => {
+  const countryId = Number(req.params.countryId)
+
   db.deleteCountry(countryId)
     .then(() => {
-      res.sendStatus(200)
+      return db.readCountries()
+    })
+    .then((countries) => {
+      res.json(countries)
     })
     .catch((e) => {
       console.error(e)
@@ -41,9 +45,10 @@ router.delete('/:id', (req, res) => {
 })
 
 //PATCH /api/v1/countries/:countryId
-router.patch('/:id', (req, res) => {
-  const countryId = Number(req.params.id)
+router.patch('/:countryId', (req, res) => {
+  const countryId = Number(req.params.countryId)
   const updatedCountry = req.body
+
   db.updateCountry(countryId, updatedCountry.country)
     .then(() => {
       res.json({ id: countryId, country: updatedCountry.country })
