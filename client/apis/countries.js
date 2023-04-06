@@ -13,15 +13,15 @@ export function addCountry(country) {
     .then((res) => res.body)
 }
 
-export function deleteCountry(id) {
-  return request.del(`/api/v1/countries/${id}`).then((res) => {
+export function deleteCountry(countryId) {
+  return request.del(`/api/v1/countries/${countryId}`).then((res) => {
     res.body
   })
 }
 
-export function updateCountry(id, country) {
+export function updateCountry(countryId, updatedcountry) {
   return request
-    .patch(`/api/v1/countries/${id}`)
-    .send({ country })
+    .patch(`/api/v1/countries/${countryId}`)
+    .send({ updatedcountry })
     .then((res) => res.body)
 }
