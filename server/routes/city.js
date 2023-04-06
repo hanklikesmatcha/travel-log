@@ -30,15 +30,12 @@ router.get('/:countryId', (req, res) => {
     })
 })
 
-//PATCH /api/v1/cities/:id
-router.patch('/:id', (req, res) => {
-  const id = Number(req.params.id)
-  const updatedCity = req.body
-
-  return db
-    .updateCity(id, updatedCity.city)
-    .then(() => {
-      res.json({ id: id, city: updatedCity.city })
+//GET /api/v1/cities/:countryId/:cityId
+router.get('/:countryId/:cityId', (req, res) => {
+  const { countryId, cityId } = req.params
+  db.readCityByCountryAndCityId(countryId, cityId)
+    .then((city) => {
+      res.json(city)
     })
     .catch((e) => {
       console.error(e)
@@ -46,11 +43,29 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-//DELETE /api/v1/cities/:countryId
-router.delete('/:countryId/:id', (req, res) => {
-  db.deleteCity(Number(req.params.id))
+//PATCH /api/v1/cities/:countryId/:cityId
+router.patch('/:countryId/:cityId', (req, res) => {
+  const { countryId, cityId } = req.params
+
+  const updatedCity = req.body
+
+  return db
+    .updateCity(countryId, cityId, updatedCity)
     .then(() => {
-      return db.readCitiesByCountryId(Number(req.params.countryId))
+      res.json({ countryId: countryId, city: updatedCity.city })
+    })
+    .catch((e) => {
+      console.error(e)
+      res.status(500).json({ message: 'Hmm, try again' })
+    })
+})
+
+//DELETE /api/v1/cities/:countryId/:cityId
+router.delete('/:countryId/:cityId', (req, res) => {
+  const { countryId, cityId } = req.params
+  db.deleteCity(countryId, cityId)
+    .then(() => {
+      return db.readCitiesByCountryId(countryId)
     })
     .then((cities) => {
       res.json(cities)
