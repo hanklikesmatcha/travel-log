@@ -31,7 +31,7 @@ function Nav() {
           style={{ marginLeft: '10px' }}
         >
           <Link
-            to="/country"
+            to="/countries"
             style={{
               textDecoration: 'none',
               textTransform: 'uppercase',

@@ -19,8 +19,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Me />} />
-        <Route path="/country" element={<Country />} />
-        <Route path="/:countryId" element={<Cities />} />
+        <Route path="/countries" element={<Country />} />
+        <Route path="/countries/:countryId" element={<Cities />} />
       </Routes>
     </>
   )

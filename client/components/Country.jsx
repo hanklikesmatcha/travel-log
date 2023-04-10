@@ -97,7 +97,10 @@ function Country() {
               </form>
             ) : (
               <>
-                <Link to={`/${country.id}`} className="card-link">
+                <Link
+                  to={`/countries/${country.country}`}
+                  className="card-link"
+                >
                   <Button variant="default">
                     {country.country.toString()}
                   </Button>
