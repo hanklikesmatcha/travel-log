@@ -7,7 +7,7 @@ function GoBack() {
     <>
       <Button color="yellow" compact uppercase>
         <Link
-          to={'/country'}
+          to={'/countries'}
           style={{ color: 'white', textDecoration: 'none' }}
         >
           Go back to country list
