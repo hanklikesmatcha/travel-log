@@ -44,21 +44,22 @@ function Country() {
     return <div>Loading countries...</div>
   }
 
-  const [editingCountry, setEditingCountry] = useState(null)
-  const [newCountryName, setNewCountryName] = useState('')
+  const [editingCountry, setEditingCountry] = useState()
+  const [newCountryName, setNewCountryName] = useState()
 
   function startEditing(country) {
+    const countryName = typeof country === 'object'? country.country : country
     setEditingCountry(country)
-    setNewCountryName(country.country)
+    setNewCountryName(countryName)
   }
-
+  
   function handleSubmit(event) {
     event.preventDefault()
-    dispatch(updatedCountry(editingCountry.id, { country: newCountryName }))
+    dispatch(updatedCountry(editingCountry.id, newCountryName ))
       .then((updatedCountry) => {
         dispatch(showCountries())
         setEditingCountry(updatedCountry)
-        setNewCountryName(updatedCountry.country)
+        setNewCountryName(updatedCountry)
       })
       .catch((e) => {
         console.error(e)
@@ -99,7 +100,7 @@ function Country() {
               <>
                 <Link to={`/${country.id}`} className="card-link">
                   <Button variant="default">
-                    {country.country.toString()}
+                    {country.country ? country.country.toString() : country.toString()}
                   </Button>
                 </Link>
                 <ActionIcon>
