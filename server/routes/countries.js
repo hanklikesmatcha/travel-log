@@ -27,6 +27,20 @@ router.get('/', (req, res) => {
     })
 })
 
+//GET /api/v1/countries/:countryId
+router.get('/:id', (req, res) => {
+  const countryId = req.params.id
+
+  db.readCountry(countryId)
+    .then((country) => {
+      res.json(country)
+    })
+    .catch((e) => {
+      console.error(e)
+      res.status(500).json({ message: 'Hmm, try again' })
+    })
+})
+
 //DELETE /api/v1/countries/:countryId
 router.delete('/:id', (req, res) => {
   const countryId = Number(req.params.id)
