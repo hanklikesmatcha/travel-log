@@ -4,6 +4,10 @@ function readCountries(db = connection) {
   return db('countries').select()
 }
 
+function readCountry(countryId, db = connection) {
+  return db('countries').where('id', countryId).select('id', 'country')
+}
+
 function createCountry(newCountry, db = connection) {
   return db('countries').insert({ country: newCountry })
 }
@@ -18,4 +22,10 @@ function deleteCountry(countryId, db = connection) {
   return db('countries').where('id', countryId).del()
 }
 
-module.exports = { createCountry, readCountries, updateCountry, deleteCountry }
+module.exports = {
+  createCountry,
+  readCountries,
+  updateCountry,
+  deleteCountry,
+  readCountry,
+}
