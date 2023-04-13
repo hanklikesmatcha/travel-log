@@ -4,16 +4,18 @@ function readCountries(db = connection) {
   return db('countries').select()
 }
 
-function createCountry(countryName, db = connection) {
-  return db('countries').insert({ country: countryName })
+function createCountry(newCountry, db = connection) {
+  return db('countries').insert({ country: newCountry })
 }
 
-function updateCountry(id, countryName, db = connection) {
-  return db('countries').where('id', id).update({ country: countryName })
+function updateCountry(countryId, updatedCountry, db = connection) {
+  return db('countries')
+    .where('id', countryId)
+    .update({ country: updatedCountry })
 }
 
-function deleteCountry(id, db = connection) {
-  return db('countries').where('id', id).del()
+function deleteCountry(countryId, db = connection) {
+  return db('countries').where('id', countryId).del()
 }
 
 module.exports = { createCountry, readCountries, updateCountry, deleteCountry }
